@@ -1,23 +1,27 @@
-aurfromgit.
+<p align="center"><strong>AurFromGit</strong></p>
+
+
 ****
 
-This program is made on rust by me while i am currently learning it.
-
+<p align="center">This program is made on rust by me while i am currently learning it.
 Use this program only when AUR is down, it exeutes command to clone AUR package exactly from git to your /home directory
-
-**Any positive reviews appreciated ;)**
+</p>
+<p align="center"><strong>Any positive reviews appreciated ;)</strong></p>
 
 ****
 
-Requires:
+<p align="center"><strong>Requirements</strong></p>
+
  * Git package installed
+ * Arch linux based OS
 
 ****
 
-**HOW TO USE:**
+<p align="center"><strong>Usage</strong></p>
 
   1. Open the program via terminal
   2. Enter the desired package name
-  3. If everything was successful, your AUR package folder shall be installed in your **home** directory
+  3. You get an option either to just clone the package in **/home** directory, or build it in **/home** directory
+  4. If everything is successfull, you wont get any errors.
 
 ****
