@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/terra-fx-t-byte/aurfromgit"
 license=('GPL-3.0')
 makedepends=('cargo' 'git')
-source=("https://github.com/terra-fx-t-byte/aurfromgit.git#tag=v$pkgver")
+source=("https://github.com/terra-fx-t-byte/aurfromgit.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
