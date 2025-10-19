@@ -72,7 +72,8 @@ fn main(){
                 println!("\n\n Installing {}... - {}/{}", pkgarg.bright_green(), i, (sz - 1));
                 let cloneproccess: process::ExitStatus = safebashinstall(pkgarg);
                 if !(cloneproccess.code() == Some(0)){
-                    emergencystop(format!("Could not successfully clone {} package.", pkgarg.red()));
+                    resultdata.insert(pkgarg.to_string(), 2);
+                    continue;
                 }
                 let success_build_code: bool = buildbash(pkgarg.to_string());
                 if success_build_code == true {
@@ -85,12 +86,12 @@ fn main(){
             let _cleancode: process::ExitStatus = runbash("clear".to_string());
             println!("\n\n Result of installing {} packages:\n", (sz - 1));
             for (key, value) in &resultdata {
-                if *value == 0 {
-                    println!(" * {} - successfully cloned and built", key.bright_green());
-                }
-                else {
-                    println!(" * {} - could not start building, would require building", key.yellow());
-                }
+                match *value {
+                    0 => println!(" * {} - successfully cloned!", key.bright_green()),
+                    1 => println!(" * {} - could not build, would require manual building", key.yellow()),
+                    2 => println!(" * {} - could not clone, package folder probably exists in /home", key.bright_red()),
+                    _ => unimplemented!()
+                };
             }
             process::exit(0);
         }
@@ -101,14 +102,21 @@ fn main(){
                 println!("\n\n Installing {}... - no building - {}/{}", pkgarg.bright_green(), i, (sz - 1));
                 let cloneproccess: process::ExitStatus = safebashinstall(pkgarg);
                 if !(cloneproccess.code() == Some(0)){
-                    emergencystop(format!("Could not successfully clone {} package.", pkgarg.red()));
+                    resultdata.insert(pkgarg.to_string(), 2);
+                    continue;
+                } else {
+                    resultdata.insert(pkgarg.to_string(), 0);
                 }
             }
             let _clrcode: process::ExitStatus = runbash("clear".to_string());
             println!("\n\n The result of cloning {} packages:\n", (sz - 1));
-            for j in 1..sz {
-                let argname = &afg_args[j];
-                println!(" * {} - sucessfully cloned", argname.bright_green());
+            for (key, value) in &resultdata {
+                match *value {
+                    0 => println!(" * {} - successfully cloned!", key.bright_green()),
+                    1 => println!(" * {} - could not build, would require manual building", key.yellow()),
+                    2 => println!(" * {} - could not clone, package folder probably exists in /home", key.bright_red()),
+                    _ => unimplemented!()
+                };
             }
             process::exit(0);
         }

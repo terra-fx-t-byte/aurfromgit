@@ -2,7 +2,7 @@
 # Maintainer: terra-fx-t-byte on github
 
 pkgname=aurfromgit
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A rust based CLI tool, mainly purposed to replace yay if AUR doesnt work by cloning packages directly from GitHub"
 arch=('x86_64')
