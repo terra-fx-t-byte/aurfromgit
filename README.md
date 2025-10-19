@@ -17,6 +17,13 @@ Use this program only when AUR is down, it exeutes command to clone AUR package 
 
 ****
 
+<p align="center"><strong>Installation</strong></p>
+
+  * Open the terminal
+  * type ```git clone https://github.com/terra-fx-t-byte/aurfromgit
+  * cd aurfromgit
+  * makepkg -si
+
 <p align="center"><strong>Usage</strong></p>
 
   1. Open the program via terminal
